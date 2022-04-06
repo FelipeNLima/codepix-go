@@ -3,8 +3,13 @@ version: "3"
 services:
   app:
     build: .
+    ports:
+    - "50051:50051"
     volumes:
-      - .:/go/src
+      - .:/go/src/
+    extra_hosts:
+      - "host.docker.internal:172.17.0.1"
+
   db:
     image: postgres:9.4
     restart: always
@@ -16,6 +21,7 @@ services:
       - POSTGRES_DB=codepix
     ports:
       - "5432:5432"
+
   pgadmin:
     image: dpage/pgadmin4
     tty: true
@@ -23,6 +29,6 @@ services:
       - PGADMIN_DEFAULT_EMAIL=admin@user.com
       - PGADMIN_DEFAULT_PASSWORD=123456
     ports:
-      - "9000:80"  
+      - "9000:80"
     depends_on:
       - db

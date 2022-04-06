@@ -5,14 +5,14 @@ package github.com.codeedu.codepix;
 option go_package = "protofiles;pb";
 
 message PixKeyRegistration {
-  string kind = 1;
-  string key = 2;
-  string accountId = 3;
+    string kind = 1;
+    string key = 2;
+    string accountId = 3;
 }
 
 message PixKey {
-  string king = 1;
-  string key = 2;
+    string kind = 1;
+    string key = 2;
 }
 
 message Account {
